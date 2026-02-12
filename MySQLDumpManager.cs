@@ -112,9 +112,10 @@ Size:         {fileInfo.Length}
             {
                 _LogHelper.LogException(ex);
                 Console.WriteLine(ex.ToString());
-
+#if DEBUG
                 Console.WriteLine("\n\nPress any key to exit.");
                 Console.ReadKey();
+#endif
             }
             return this;
         }
