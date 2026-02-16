@@ -20,7 +20,7 @@ namespace MySQLDumper
             EventSource = CreateEventSource(applicationName, logName);
             _EventLog = new EventLog(applicationName);
             _EventLog.Source = EventSource;
-    }
+        }
 
         #endregion
 
@@ -29,11 +29,13 @@ namespace MySQLDumper
         public void LogException(Exception ex)
         {
             _EventLog.WriteEntry(ex.Message.Substring(0, Math.Min(ex.Message.Length, 32766)), EventLogEntryType.Information);
+            Console.WriteLine(ex.Message.Substring(0, Math.Min(ex.Message.Length, 32766)), EventLogEntryType.Information);
         }
 
         public void LogMessage(string message)
         {
             _EventLog.WriteEntry(message.Substring(0, Math.Min(message.Length, 32766)), EventLogEntryType.Information);
+            Console.WriteLine(message.Substring(0, Math.Min(message.Length, 32766)), EventLogEntryType.Information);
         }
 
         #endregion
